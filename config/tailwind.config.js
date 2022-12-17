@@ -12,7 +12,12 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
-    },
+      colors: {
+        red:{
+          logo: '#ff385c'
+        }
+      },
+    }
   },
   plugins: [
     require('@tailwindcss/forms'),
