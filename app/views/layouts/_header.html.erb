@@ -1,13 +1,13 @@
 <header>
   <nav class="items-center w-11/12 mx-auto">
-    <div class="h-14 sm:h-20 flex items-center text-sm">
-      <svg class="h-8 text-red-logo w-4/12 flex justify-start">
-        <%= link_to root_path do %>
-          <%= render 'layouts/airbnb_icon' %>
+    <div class="h-14 sm:h-20 hidden md:flex items-center justify-between text-sm">
+      <div class="w-8/12 flex justify-start min-[950px]:justify-between">
+        <%= link_to root_path, class:"w-1/12 min-[950px]:w-2/12 flex items-center" do %>
+          <svg class="h-8 w-full m-0 text-red-logo flex justify-start items-center">
+            <%= render 'layouts/airbnb_icon' %>
+          </svg>
         <% end %>
-      </svg>
-      <div class="w-4/12">
-        <div class= "border border-gray-200 hover:shadow-md shadow-sm rounded-full h-12 flex justify-center items-center px-4">
+        <div class= "border border-gray-200 hover:shadow-md shadow-sm rounded-full h-12 flex justify-center items-center px-4 w-[352.2px]">
           <p class="ml-1 mr-auto font-medium" style="color: #222222">Anywhere</p>
           <span class="h-3/6 border border-gray-200"></span>
           <p class="mx-auto font-medium" style="color: #222222">Any week</p>
@@ -16,8 +16,8 @@
           <i class="fa-solid fa-magnifying-glass bg-red-logo rounded-full p-2 mr-0 text-white"></i>
         </div>
       </div>
-      <div class="w-4/12 flex items-center justify-end">
-        <%= link_to 'Airbnb your home', root_path, class:"rounded-full px-3 py-2 font-medium hover:bg-gray-100" %>
+      <div class="w-6/12 min-[950px]:w-4/12 flex items-center justify-start">
+        <%= link_to 'Airbnb your home', root_path, class:"rounded-full px-3 py-2 font-medium hover:bg-gray-100 ml-auto" %>
         <i class="fa-solid fa-earth-americas fa-lg mx-3 px-3 py-5 rounded-full hover:bg-gray-100"></i>
         <div class="flex items-center px-3 py-2 border rounded-full hover:shadow-md">
           <i class="fa-solid fa-bars mr-2" style="color: #222222; padding: 1px 3px;"></i>
