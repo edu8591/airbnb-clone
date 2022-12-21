@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+@import './application.tailwind.css';
+@import './componentes/index';
+
+body {
+  font-family: 'Manrope', sans-serif;
+}
