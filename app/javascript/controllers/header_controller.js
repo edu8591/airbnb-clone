@@ -9,7 +9,10 @@ export default class extends Controller {
   }
   openAuthModal(event){
     event.preventDefault()
-    leave(this.openUserMenuTarget)
+    this.#closeUserMenu()
     document.getElementById('modal-trigger').click() // Clicks element inside the modal controller
+  }
+  #closeUserMenu() {
+    leave(this.openUserMenuTarget);
   }
 }
