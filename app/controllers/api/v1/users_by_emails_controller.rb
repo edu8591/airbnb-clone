@@ -1,10 +1,9 @@
-# frozen_string_literal: true
-
 module Api
   module V1
-    class UsersController < ApplicationController
+    class UsersByEmailsController < ApplicationController
       def show
-        user = User.find(params[:id])
+        # binding.pry
+        user = User.find_by_email!(params[:email])
         respond_to do |format|
           format.json { render json: user.to_json, status: :ok }
         end
