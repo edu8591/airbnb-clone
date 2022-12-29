@@ -20,14 +20,15 @@ export default class extends Controller {
   }
 
   submitForm() {
-    if (this.emailInputTarget.value == "") {
-      this.emailAlertTextTarget.innerText = "Email is required.";
-      enter(this.emailAlertTarget);
+    if (this.emailInputTarget.value.length === 0) {
+      this.#emailAlert("Email is required.")
+    } else if (this.#invalidEmail(this.emailInputTarget.value)) {
+      this.#emailAlert("Enter a valid email.");
     } else {
       axios.get("/api/v1/users_by_email", {
         params: { email: this.emailInputTarget.value },
         headers:{'ACCEPT': 'application/json'}
-      }).then((response) => {
+      }).then(() => {
         this.#displayForm(this.signInFormTarget);
       }).catch((response)=> {
         console.log('failed response:', response);
@@ -52,5 +53,13 @@ export default class extends Controller {
       .then(() => enter(this.backBtnTarget))
       .then(() => enter(formToDisplay));
     this.panelTitleTarget.innerText = "Log in";
+  }
+  #invalidEmail(email){
+    // checks validity of email
+    return !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email));
+  }
+  #emailAlert(message) {
+    this.emailAlertTextTarget.innerText = message;
+    enter(this.emailAlertTarget);
   }
 }
