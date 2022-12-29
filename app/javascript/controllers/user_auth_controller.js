@@ -27,19 +27,19 @@ export default class extends Controller {
   resetForm(){
     this.emailFieldTarget.value = '';
     this.emailInputTarget.value = '';
+    leave(this.backBtnTarget)
+    .then(()=>leave(this.signInFormTarget))
+    .then(()=>leave(this.emailAlertTarget))
+    .then(()=>enter(this.exitBtnTarget))
+    .then(()=>enter(this.mailValidationFormTarget))
     this.panelTitleTarget.innerText = 'Log in or sign up';
-    leave(this.backBtnTarget);
-    enter(this.exitBtnTarget);
-    enter(this.mailValidationFormTarget);
-    leave(this.signInFormTarget);
-    leave(this.emailAlertTarget);
   }
   #displayForm(formToDisplay){
-    this.panelTitleTarget.innerText = "Log in";
-    leave(this.exitBtnTarget);
-    enter(this.backBtnTarget);
     this.emailFieldTarget.value = this.emailInputTarget.value;
-    leave(this.mailValidationFormTarget)
-    enter(formToDisplay)
+    leave(this.exitBtnTarget)
+    .then(()=>leave(this.mailValidationFormTarget))
+    .then(()=> enter(this.backBtnTarget))
+    .then(()=>enter(formToDisplay))
+    this.panelTitleTarget.innerText = "Log in";
   }
 }
