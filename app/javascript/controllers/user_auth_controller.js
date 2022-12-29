@@ -1,12 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
 import { enter, leave, toggle } from "el-transition";
+import axios from "axios";
 
+var FormData = require("form-data");
 
 // Connects to data-controller="user-auth"
 export default class extends Controller {
   static targets = ['exitBtn', 'panelTitle', 'backBtn', 'emailInput', 'emailAlert', 'mailValidationForm', 'signInForm', 'emailAlertText', 'emailField']
   connect() {
-    console.log(this.emailFieldTarget);
+    console.log(axios);
   }
 
   submitForm() {
