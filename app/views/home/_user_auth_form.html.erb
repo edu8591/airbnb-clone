@@ -17,7 +17,16 @@
     </div>
   </div>
   <%#  contains the form to get email%>
-  <div data-user-auth-target="mailValidationForm" class="">
+  <div
+    data-user-auth-target="mailValidationForm"
+    class=""
+    data-transition-enter="transition ease-out duration-100"
+    data-transition-enter-start="transform opacity-0 scale-100"
+    data-transition-enter-end="transform opacity-100 scale-100"
+    data-transition-leave="transition ease-in duration-75"
+    data-transition-leave-start="transform opacity-100 scale-100"
+    data-transition-leave-end="transform opacity-0 scale-95"
+  >
     <div>
       <div class="pt-4">
         <h4 class="text-2xl leading-6 text-gray-900 font-medium">Welcome to Airbnb</h4>
@@ -74,7 +83,20 @@
   </div>
 
   <%# Sign in form %>
-  <%=form_for(resource, as: resource_name, url: session_path(resource_name), html:{class:'hidden', data:{user_auth_target:"signInForm"}}) do |f| %>
+  <%=form_for(resource, as: resource_name, url: session_path(resource_name),
+    html:{
+      class:'hidden',
+      data:{
+        user_auth_target:"signInForm",
+        transition_enter:"transition ease-out duration-100",
+        transition_enter_start:"transform opacity-0 scale-100",
+        transition_enter_end:"transform opacity-100 scale-100",
+        transition_leave:"transition ease-out duration-75",
+        transition_leave_start:"transform opacity-100 scale-100",
+        transition_leave_end:"transform opacity-0 scale-95"
+      }
+    }
+    ) do |f| %>
     <%= f.hidden_field :email, autofocus: true, autocomplete: "email", data:{user_auth_target:'emailField'} %>
 
     <div class="mt-6 border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-gray-900 focus-within:border-gray-900">
