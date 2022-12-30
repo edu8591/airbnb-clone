@@ -11,3 +11,11 @@
 }
 
 */
+
+.input-invalid {
+  @apply focus-within:border-rose-500 focus-within:ring-rose-500 border-rose-500
+}
+
+.input-default {
+@apply focus-within:border-gray-900 focus-within:ring-gray-900 border-gray-300
+}
