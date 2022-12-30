@@ -16,7 +16,7 @@ export default class extends Controller {
     "emailField",
   ];
   connect() {
-    console.log(axios);
+    console.log(this.emailInputTarget.parentElement.children);
   }
 
   submitForm() {
@@ -45,6 +45,7 @@ export default class extends Controller {
       .then(() => enter(this.exitBtnTarget))
       .then(() => enter(this.mailValidationFormTarget));
     this.panelTitleTarget.innerText = "Log in or sign up";
+    this.#resetEmailAlert()
   }
   #displayForm(formToDisplay) {
     this.emailFieldTarget.value = this.emailInputTarget.value;
@@ -60,6 +61,19 @@ export default class extends Controller {
   }
   #emailAlert(message) {
     this.emailAlertTextTarget.innerText = message;
+    this.emailInputTarget.parentElement.classList.remove("input-default");
+    this.emailInputTarget.parentElement.classList.add("input-invalid");
+    this.emailInputTarget.parentElement.children[0].classList.remove("text-gray-900");
+    this.emailInputTarget.parentElement.children[0].classList.add("text-rose-500");
     enter(this.emailAlertTarget);
+    this.emailInputTarget.focus()
+  }
+  #resetEmailAlert(){
+    this.emailInputTarget.parentElement.classList.remove("input-invalid");
+    this.emailInputTarget.parentElement.classList.add("input-default");
+    this.emailInputTarget.parentElement.children[0].classList.remove("text-rose-500");
+    this.emailInputTarget.parentElement.children[0].classList.add("text-gray-900");
+    leave(this.emailAlertTarget);
+
   }
 }

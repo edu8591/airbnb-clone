@@ -3,7 +3,7 @@ import { enter, leave, toggle } from "el-transition";
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets =['wrapper', 'backdrop', 'panel', 'emailInput', 'emailAlert', 'backBtn', 'exitBtn', 'panelTitle']
+  static targets =['wrapper', 'backdrop', 'panel', 'emailInput', 'backBtn', 'exitBtn', 'panelTitle', 'backBtn']
   // connect() {
   //   enter(this.wrapperTarget)
   //   enter(this.backdropTarget)
@@ -13,11 +13,11 @@ export default class extends Controller {
     leave(this.wrapperTarget);
     leave(this.backdropTarget);
     leave(this.panelTarget);
-    leave(this.emailAlertTarget);
     leave(this.backBtnTarget)
     enter(this.exitBtnTarget)
     this.panelTitleTarget.innerText = "Log in or sign up";
     this.emailInputTarget.value = ''
+    this.backBtnTarget.click()
   }
 
   showModal() {
