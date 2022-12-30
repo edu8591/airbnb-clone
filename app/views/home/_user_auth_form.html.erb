@@ -48,12 +48,10 @@
     </div>
 
     <div class="my-5">
-      <button
-        type="button"
-        class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-3 airbnb-gradient text-white"
-        data-action='click->user-auth#submitForm'
+      <button type="button" class="btn-submit airbnb-gradient" data-action='click->user-auth#submitForm'
       >
-        Continue</button>
+        Continue
+      </button>
     </div>
 
     <div class="relative">
@@ -86,6 +84,7 @@
   <%=form_for(resource, as: resource_name, url: session_path(resource_name),
     html:{
       class:'hidden',
+      id:'form1',
       data:{
         user_auth_target:"signInForm",
         transition_enter:"transition ease-out duration-100",
@@ -105,11 +104,47 @@
     </div>
 
     <div class="actions my-5">
-      <%= f.submit "Log in", class:'inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-3 airbnb-gradient text-white' %>
+      <%= f.submit "Log in", class:'btn-submit airbnb-gradient' %>
     </div>
 
     <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
       <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
     <% end %>
+  <% end %>
+
+  <%# contains the sign up form %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+    html:{
+      class:'hidden',
+      id:'form2',
+      data:{
+        user_auth_target:"signUpForm",
+        transition_enter:"transition ease-out duration-100",
+        transition_enter_start:"transform opacity-0 scale-100",
+        transition_enter_end:"transform opacity-100 scale-100",
+        transition_leave:"transition ease-out duration-75",
+        transition_leave_start:"transform opacity-100 scale-100",
+        transition_leave_end:"transform opacity-0 scale-95"
+      }
+    }
+  ) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="mt-6 border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-gray-900 focus-within:border-gray-900">
+      <%= f.label :email, class:"block text-xs font-medium text-gray-900" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm", placeholder:'Email', data:{user_auth_target:'emailField'} %>
+    </div>
+
+    <div class="mt-6 border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-gray-900 focus-within:border-gray-900">
+      <%= f.label :password, class:"block text-xs font-medium text-gray-900" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password", class:"block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm", placeholder:'Password' %>
+    </div>
+
+    <div class="actions my-5">
+      <%= f.submit "Agree and continue", class:"btn-submit airbnb-gradient" %>
+    </div>
   <% end %>
 </div>

@@ -12,11 +12,12 @@ export default class extends Controller {
     "emailAlert",
     "mailValidationForm",
     "signInForm",
+    "signUpForm",
     "emailAlertText",
     "emailField",
   ];
   connect() {
-    console.log(this.emailInputTarget.parentElement.children);
+    console.log(this.signUpFormTarget);
   }
 
   submitForm() {
@@ -31,6 +32,7 @@ export default class extends Controller {
       }).then(() => {
         this.#displayForm(this.signInFormTarget);
       }).catch((response)=> {
+        this.#displayForm(this.signUpFormTarget);
         console.log('failed response:', response);
         console.log('Pending ot implement signup form');
       })
@@ -39,8 +41,11 @@ export default class extends Controller {
   resetForm() {
     this.emailFieldTarget.value = "";
     this.emailInputTarget.value = "";
+    const form = this.signInFormTarget.classList.contains("hidden")
+      ? this.signUpFormTarget
+      : this.signInFormTarget;
     leave(this.backBtnTarget)
-      .then(() => leave(this.signInFormTarget))
+      .then(() => leave(form))
       .then(() => leave(this.emailAlertTarget))
       .then(() => enter(this.exitBtnTarget))
       .then(() => enter(this.mailValidationFormTarget));
@@ -48,12 +53,16 @@ export default class extends Controller {
     this.#resetEmailAlert()
   }
   #displayForm(formToDisplay) {
-    this.emailFieldTarget.value = this.emailInputTarget.value;
+    // this.emailFieldTarget.value = this.emailInputTarget.value;
+    this.emailFieldTargets.forEach(
+      (field) => (field.value = this.emailInputTarget.value)
+    );
     leave(this.exitBtnTarget)
       .then(() => leave(this.mailValidationFormTarget))
       .then(() => enter(this.backBtnTarget))
       .then(() => enter(formToDisplay));
-    this.panelTitleTarget.innerText = "Log in";
+    this.panelTitleTarget.innerText =
+      formToDisplay === this.signInFormTarget ? "Log in" : "Sign up";
   }
   #invalidEmail(email){
     // checks validity of email
@@ -74,6 +83,5 @@ export default class extends Controller {
     this.emailInputTarget.parentElement.children[0].classList.remove("text-rose-500");
     this.emailInputTarget.parentElement.children[0].classList.add("text-gray-900");
     leave(this.emailAlertTarget);
-
   }
 }
