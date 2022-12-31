@@ -24,6 +24,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'dotenv-rails'
   gem 'rspec-rails', '~>6.0.0'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 end
 
 group :development do
@@ -37,6 +38,9 @@ group :development do
   # gem 'spring'
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
+end
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem 'kredis'

@@ -39,10 +39,12 @@
             data-transition-leave-end="transform opacity-0 scale-95"
           >
             <!-- Active: "bg-gray-100", Not Active: "" -->
-            <div class="py-1" role="none">
-              <a data-action="click->header#openAuthModal" href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Sign up</a>
-              <a data-action="click->header#openAuthModal" href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Log in</a>
-            </div>
+            <% unless user_signed_in? %>
+              <div class="py-1" role="none">
+                <a data-action="click->header#openAuthModal" href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Sign up</a>
+                <a data-action="click->header#openAuthModal" href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Log in</a>
+              </div>
+            <% end %>
             <div class="py-1" role="none">
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2">Airbnb your home</a>
               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2">Host an experience</a>
