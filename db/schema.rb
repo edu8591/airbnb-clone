@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_223712) do
   enable_extension "plpgsql"
 
   create_table "properties", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.string "headline"
     t.text "description"
     t.string "city"
