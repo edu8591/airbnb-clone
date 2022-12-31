@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 10.times do
   Property.create!(
-    name: Faker::Lorem.unique.words(number: 2),
+    name: Faker::Lorem.unique.words(number: 2).join(' '),
     headline: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph,
     street_1: Faker::Address.street_address,
