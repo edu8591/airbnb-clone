@@ -37,6 +37,9 @@ group :development do
   # gem 'spring'
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
+end
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem 'kredis'
