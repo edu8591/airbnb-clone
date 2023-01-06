@@ -24,7 +24,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
-  gem 'pry-byebug'
+  gem 'pry-rails', '~> 0.3.4'
   gem 'rspec-rails', '~>6.0.0'
 end
 
