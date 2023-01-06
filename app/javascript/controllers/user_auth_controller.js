@@ -16,9 +16,9 @@ export default class extends Controller {
     "emailAlertText",
     "emailField",
   ];
-  connect() {
-    console.log(this.signUpFormTarget);
-  }
+  // connect() {
+  //   console.log(this.signUpFormTarget);
+  // }
 
   submitForm() {
     if (this.emailInputTarget.value.length === 0) {
