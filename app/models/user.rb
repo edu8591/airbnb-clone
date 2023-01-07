@@ -9,4 +9,8 @@ class User < ApplicationRecord
   def create_profile
     self.profile = Profile.create
   end
+
+  def coords
+    { latitude: self.profile.latitude, longitude: self.profile.longitude }
+  end
 end
