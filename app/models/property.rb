@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Property < ApplicationRecord
+  include AddressVerifiable
   validates :name, presence: true
   validates :headline, presence: true
   validates :description, presence: true
@@ -9,16 +10,10 @@ class Property < ApplicationRecord
   validates :country, presence: true
   validates :street_1, presence: true
   geocoded_by :address
-  after_validation :geocode, if: :address_changes?
+  after_validation :geocode, if: :address_changed?
 
   def address
     # [street_1, street_2, city, state, country].compact.join(', ')
     [state, country].compact.join(', ')
-  end
-
-  private
-
-  def address_changes?
-    street_1_changed? || street_2_changed? || city_changed? || state_changed? || country_changed?
   end
 end
