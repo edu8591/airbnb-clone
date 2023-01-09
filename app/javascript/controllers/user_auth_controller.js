@@ -15,10 +15,8 @@ export default class extends Controller {
     "signUpForm",
     "emailAlertText",
     "emailField",
+    "passwordField"
   ];
-  // connect() {
-  //   console.log(this.signUpFormTarget);
-  // }
 
   submitForm() {
     if (this.emailInputTarget.value.length === 0) {
@@ -38,8 +36,14 @@ export default class extends Controller {
       })
     }
   }
+
+  submitFormWithEnter(event) {
+    if(event.key === 'Enter') this.submitForm()
+  }
+
   resetForm() {
-    this.emailFieldTarget.value = "";
+    this.emailFieldTargets.forEach(input => input.value = "");
+    this.passwordFieldTargets.forEach(input => input.value = "");
     this.emailInputTarget.value = "";
     const form = this.signInFormTarget.classList.contains("hidden")
       ? this.signUpFormTarget
@@ -52,6 +56,7 @@ export default class extends Controller {
     this.panelTitleTarget.innerText = "Log in or sign up";
     this.#resetEmailAlert()
   }
+
   #displayForm(formToDisplay) {
     // this.emailFieldTarget.value = this.emailInputTarget.value;
     this.emailFieldTargets.forEach(
@@ -64,10 +69,12 @@ export default class extends Controller {
     this.panelTitleTarget.innerText =
       formToDisplay === this.signInFormTarget ? "Log in" : "Sign up";
   }
+
   #invalidEmail(email){
     // checks validity of email
     return !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email));
   }
+
   #emailAlert(message) {
     this.emailAlertTextTarget.innerText = message;
     this.emailInputTarget.parentElement.classList.remove("input-default");
@@ -77,6 +84,7 @@ export default class extends Controller {
     enter(this.emailAlertTarget);
     this.emailInputTarget.focus()
   }
+
   #resetEmailAlert(){
     this.emailInputTarget.parentElement.classList.remove("input-invalid");
     this.emailInputTarget.parentElement.classList.add("input-default");
