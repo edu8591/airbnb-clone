@@ -11,6 +11,7 @@ class Property < ApplicationRecord
   validates :street_1, presence: true
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+  monetize :price_cents, allow_nil: true
 
   def address
     # [street_1, street_2, city, state, country].compact.join(', ')
