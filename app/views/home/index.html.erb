@@ -10,8 +10,9 @@
         data-property-coords='{"latitude": <%= property.latitude %>, "longitude": <%= property.longitude %>}'
         data-geolocation-target ='property'
       >
-        <div class="block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 hover:opacity-80">
-          <img src="https://images.unsplash.com/photo-1503785640985-f62e3aeee448?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80" alt="trees" class="rounded-xl">
+        <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 overflow-hidden">
+          <%# <img src="https://images.unsplash.com/photo-1503785640985-f62e3aeee448?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80" alt="trees" class="rounded-xl"> %>
+          <%= image_tag property.default_image, class:"object-cover pointer-events-none group-hover:opacity-75" %>
         </div>
         <div class="content">
           <div class="flex justify-between mt-2 text-sm font-medium truncate text-gray-900 pointer-events-none">

@@ -5,6 +5,7 @@ ruby '3.2.0'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'geocoder'
+gem 'image_processing', '~> 1.2'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'money-rails', '~> 1.12'
@@ -53,4 +54,3 @@ end
 #
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem 'image_processing', '~> 1.2'
