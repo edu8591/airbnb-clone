@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-5.times do |i|
+10.times do |i|
   property = Property.create!(
     name: Faker::Lorem.unique.words(number: 2).join(' '),
     headline: Faker::Lorem.sentence,
