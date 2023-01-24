@@ -13,7 +13,7 @@ class Property < ApplicationRecord
   after_validation :geocode, if: :address_changed?
   monetize :price_cents, allow_nil: true
   has_many_attached :images, dependent: :destroy
-  
+  has_many :reviews, as: :reviewable
   def address
     # [street_1, street_2, city, state, country].compact.join(', ')
     [state, country].compact.join(', ')
@@ -21,6 +21,10 @@ class Property < ApplicationRecord
 
   def default_image
     images.first
+  end
+
+  def average_rating
+    reviews.average(:rating)
   end
 end
 
